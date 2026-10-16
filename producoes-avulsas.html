@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Produções Avulsas — Urba's Produções</title>
+<meta name="description" content="Jingles, vinhetas, trilhas sonoras e identidade sonora originais, sem contrato mensal. Solicite seu orçamento personalizado pelo WhatsApp.">
+<link rel="icon" href="logo-urbas.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#061f36;
+    --navy-800:#082a48;
+    --navy-700:#0b3558;
+    --navy-600:#114570;
+    --cyan:#4db3d9;
+    --cyan-soft:#8fd3ec;
+    --ice:#eaf6fc;
+    --wood:#e0a35a;
+    --text:#d6e6f1;
+    --radius:20px;
+    --wa:#25d366;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--navy-900);
+    color:var(--text);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:#fff;line-height:1.1;letter-spacing:-.02em}
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  section{padding:110px 0}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Sora',sans-serif;font-size:.78rem;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--cyan)}
+  .section-title{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800;margin-bottom:16px}
+  .section-lead{max-width:640px;font-size:1.08rem;color:#a9c4d8}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;
+    text-transform:uppercase;padding:17px 30px;border-radius:999px;
+    border:2px solid transparent;cursor:pointer;transition:.25s ease;
+  }
+  .btn-primary{background:var(--cyan);color:var(--navy-900)}
+  .btn-primary:hover{background:var(--ice);transform:translateY(-3px);box-shadow:0 14px 34px -10px rgba(77,179,217,.6)}
+  .btn-wa{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .btn-wa:hover{background:var(--wa);border-color:var(--wa);color:#04210f;transform:translateY(-3px)}
+  .btn-wa svg{width:20px;height:20px;fill:currentColor}
+  .btn-plans{background:transparent;color:var(--cyan);border-color:var(--cyan)}
+  .btn-plans:hover{background:var(--cyan);color:var(--navy-900);transform:translateY(-3px);box-shadow:0 14px 34px -10px rgba(77,179,217,.6)}
+
+  /* header */
+  header{
+    position:fixed;inset:0 0 auto 0;z-index:50;
+    background:rgba(6,31,54,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:1.05rem}
+  .brand img{width:46px;height:46px;border-radius:50%}
+  nav ul{display:flex;gap:30px;list-style:none;font-size:.92rem;font-weight:500}
+  nav a:hover{color:var(--cyan)}
+  .nav .btn{padding:11px 22px;font-size:.78rem}
+  .menu-toggle{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
+
+  /* hero */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:150px 0 100px;overflow:hidden;
+    background:var(--navy-800) url("estudio-urbas.jpg") center/cover no-repeat;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(90deg,rgba(6,31,54,.96) 0%,rgba(6,31,54,.82) 42%,rgba(6,31,54,.35) 100%),
+      linear-gradient(0deg,var(--navy-900) 0%,transparent 30%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero h1{font-size:clamp(2.5rem,7vw,5.4rem);font-weight:800;max-width:900px;margin-bottom:26px}
+  .hero h1 span{color:var(--cyan)}
+  .hero p.lead{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:600px;color:#c6dbea;margin-bottom:40px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:16px}
+  .rec{
+    position:absolute;right:max(20px,calc((100% - 1180px)/2));bottom:70px;z-index:1;
+    display:flex;align-items:center;gap:12px;
+    font-family:'Sora',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:12px 20px;border-radius:999px;background:rgba(6,31,54,.7);
+    border:1px solid rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(8px);
+  }
+  .rec i{width:10px;height:10px;border-radius:50%;background:#ff4d4d;animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+  /* marquee */
+  .marquee{background:var(--cyan);color:var(--navy-900);overflow:hidden;padding:18px 0;white-space:nowrap}
+  .marquee div{display:inline-block;animation:slide 32s linear infinite;font-family:'Sora',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase}
+  .marquee span{margin:0 26px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* about / posicionamento */
+  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+  .quote{
+    font-family:'Sora',sans-serif;font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:700;color:#fff;line-height:1.25;
+    padding-left:26px;border-left:4px solid var(--wood);margin-top:32px;
+  }
+  .about-visual{
+    position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;
+    background:var(--navy-700) url("estudio-urbas.jpg") 30% center/cover no-repeat;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.6);
+  }
+  .about-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,31,54,.65),transparent 50%)}
+  .about-visual .tag{
+    position:absolute;left:22px;bottom:22px;z-index:1;
+    font-family:'Sora',sans-serif;font-weight:700;color:#fff;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+  .pillar{padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-weight:600;color:#fff;font-size:.95rem}
+  .pillar b{display:block;color:var(--cyan);font-family:'Sora',sans-serif;font-size:.72rem;letter-spacing:.2em;margin-bottom:4px}
+
+  /* services */
+  #servicos{background:linear-gradient(180deg,var(--navy-900),var(--navy-800))}
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:56px}
+  .card{
+    position:relative;padding:38px;border-radius:var(--radius);
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.1);transition:.3s ease;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 30px 60px -30px rgba(77,179,217,.45)}
+  .card .num{position:absolute;right:26px;top:14px;font-family:'Sora',sans-serif;font-weight:800;font-size:4.4rem;color:rgba(255,255,255,.05)}
+  .card .ico{font-size:2rem;margin-bottom:16px}
+  .card h3{font-size:1.6rem;margin-bottom:10px}
+  .card p{color:#a9c4d8;margin-bottom:18px}
+  .card ul{list-style:none;display:grid;gap:8px}
+  .card li{display:flex;gap:10px;font-size:.96rem;color:#dcebf5}
+  .card li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--cyan)}
+  .card .more{display:inline-block;margin-top:22px;font-family:'Sora',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wood)}
+  .card .more:hover{color:#fff}
+
+  /* how it works */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:60px;counter-reset:s}
+  .step{position:relative;padding:26px 22px;border-radius:var(--radius);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+  .step::before{
+    counter-increment:s;content:"0" counter(s);
+    display:block;font-family:'Sora',sans-serif;font-weight:800;font-size:2.2rem;color:var(--cyan);margin-bottom:14px;
+  }
+  .step h3{font-size:1.1rem;margin-bottom:8px}
+  .step p{font-size:.92rem;color:#a9c4d8}
+
+  /* audience */
+  #publico{background:var(--navy-800)}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .chip{padding:13px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:500;transition:.25s}
+  .chip:hover{background:var(--cyan);color:var(--navy-900);border-color:var(--cyan)}
+
+  /* portfolio */
+  .tracks{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+  .track{padding:26px;border-radius:var(--radius);background:linear-gradient(160deg,var(--navy-700),var(--navy-800));border:1px solid rgba(255,255,255,.09)}
+  .track small{font-family:'Sora',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+  .track h3{font-size:1.2rem;margin:8px 0 18px}
+  .wave{display:flex;align-items:center;gap:3px;height:46px;margin-bottom:16px}
+  .wave i{flex:1;background:var(--cyan-soft);border-radius:3px;opacity:.75}
+  .track .btn{width:100%;padding:14px 20px}
+
+  /* CTA */
+  #contato{
+    position:relative;
+    background:linear-gradient(135deg,var(--navy-700),var(--navy-900));
+  }
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .cta-grid h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;margin-bottom:20px}
+  .cta-grid h2 span{color:var(--cyan)}
+  .contact-list{margin-top:30px;display:grid;gap:12px;color:#c6dbea}
+  form{padding:36px;border-radius:var(--radius);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:grid;gap:16px}
+  label{display:grid;gap:7px;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#a9c4d8}
+  input,select,textarea{
+    font:inherit;color:#fff;background:rgba(6,31,54,.7);
+    border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:14px 16px;text-transform:none;letter-spacing:0;font-weight:400;
+  }
+  select option{color:#000}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--cyan);border-color:transparent}
+  textarea{min-height:110px;resize:vertical}
+  form .btn{background:var(--wa);color:#04210f;margin-top:6px}
+  form .btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px -10px rgba(37,211,102,.6)}
+  .hint{font-size:.8rem;color:#7fa0b8;text-align:center}
+
+  footer{padding:46px 0;background:#041728;border-top:1px solid rgba(255,255,255,.07)}
+  .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;font-size:.9rem;color:#7fa0b8}
+  .foot .brand img{width:52px;height:52px}
+
+  .wa-float{
+    position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;
+    background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);transition:.25s;
+  }
+  .wa-float:hover{transform:scale(1.1)}
+  .wa-float svg{width:32px;height:32px;fill:#04210f}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .marquee div,.rec i{animation:none}
+  }
+
+  @media (max-width:960px){
+    section{padding:80px 0}
+    .split,.cta-grid{grid-template-columns:1fr;gap:44px}
+    .services{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .tracks{grid-template-columns:1fr}
+    .about-visual{aspect-ratio:16/10}
+    nav ul{display:none;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;background:var(--navy-900);padding:10px 20px 24px;border-bottom:1px solid rgba(255,255,255,.1)}
+    nav ul.open{display:flex}
+    nav li a{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .menu-toggle{display:block}
+    .nav .btn{display:none}
+    .rec{display:none}
+  }
+  @media (max-width:560px){
+    .steps,.pillars{grid-template-columns:1fr}
+    .card{padding:28px}
+    .hero-cta .btn{width:100%}
+  }
+
+  /* simplificação */
+  section{padding:84px 0}
+  section.alt{background:rgba(255,255,255,.03)}
+  .duo{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:48px}
+  .duo .btn{margin-top:6px}
+  .table-scroll{overflow-x:auto;margin-top:44px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.1)}
+  .compare{width:100%;border-collapse:collapse;min-width:640px;font-size:.96rem}
+  .compare th,.compare td{padding:16px 20px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
+  .compare th{font-family:'Sora',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan-soft)}
+  .compare tr:last-child td{border-bottom:0}
+  .compare td b{color:#fff}
+  .compare td:last-child a{color:var(--cyan);font-weight:600;white-space:nowrap}
+  .compare td:last-child a:hover{color:#fff}
+  .faq{margin-top:30px;display:grid;gap:10px}
+  .faq details{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;background:rgba(255,255,255,.04)}
+  .faq summary{cursor:pointer;font-weight:600;color:#fff}
+  .faq p{margin-top:10px;font-size:.95rem;color:#a9c4d8}
+  @media (max-width:960px){.duo{grid-template-columns:1fr}section{padding:64px 0}}
+</style>
+<style>
+  section{padding:84px 0}
+  section.alt{background:rgba(255,255,255,.03)}
+  .steps.four{grid-template-columns:repeat(4,1fr)}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+  .trio .card h3{font-size:1.35rem}
+  .price{font-family:'Sora',sans-serif;font-weight:800;font-size:1.6rem;color:var(--cyan-soft);margin-bottom:12px}
+  .note{max-width:720px;margin-top:30px;color:#a9c4d8}
+  .cta-final{text-align:center}
+  .cta-final .section-lead{margin:0 auto 30px}
+  .cta-final .hero-cta{justify-content:center}
+  @media (max-width:960px){.trio{grid-template-columns:1fr}.steps.four{grid-template-columns:1fr 1fr}section{padding:64px 0}}
+  @media (max-width:560px){.steps.four{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="logo-urbas.jpg" alt="Logotipo Urba's Produções">
+      <span>URBA'S</span>
+    </a>
+    <nav>
+      <ul id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#investimento">Investimento</a></li>
+        <li><a href="urbas-producoes.html">Planos mensais</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#contato">Pedir orçamento</a>
+    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap">
+      <span class="eyebrow">Produções avulsas</span>
+      <h1>Sua marca merece uma <span>música</span> que chama a atenção.</h1>
+      <p class="lead">Na Urba's Produções, cada projeto começa com uma ideia e vira uma produção sonora original, desenvolvida para comunicar a personalidade da sua marca. Escolha o que você precisa e solicite seu orçamento personalizado.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#servicos">Ver serviços</a>
+        <a class="btn btn-wa" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Urba%27s%20e%20quero%20um%20or%C3%A7amento%20de%20produ%C3%A7%C3%A3o%20avulsa." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.700-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.600-.9-2.200-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500.7.3 1.300.5 1.700.6.7.2 1.400.2 1.900.1.600-.1 1.700-.7 2-1.400.2-.7.2-1.200.2-1.400-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="rec"><i></i> Gravando agora</div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Nossos serviços</span>
+        <h2 class="section-title">Escolha o que sua marca precisa.</h2>
+        <p class="section-lead">Produções pontuais, sem contrato mensal.</p>
+      </div>
+      <div class="services">
+        <article class="card reveal">
+          <div class="ico">🎵</div>
+          <h3>Jingles personalizados</h3>
+          <p>Músicas originais para divulgar sua empresa, produto, serviço, campanha comercial ou evento. Para empresas, lojas, clínicas, restaurantes e eventos.</p>
+          <ul><li>Entrega sugerida: Música original, mixagem e versões combinadas no orçamento.</li></ul>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20de%20jingle%20personalizado." target="_blank" rel="noopener">Orçar meu jingle →</a>
+        </article>
+        <article class="card reveal">
+          <div class="ico">📻</div>
+          <h3>Vinhetas e chamadas</h3>
+          <p>Assinaturas sonoras e chamadas para rádios, podcasts, programas, lojas e marcas.</p>
+          <ul><li>Entrega sugerida: Locução, assinatura sonora e versões conforme o briefing.</li></ul>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20de%20vinhetas." target="_blank" rel="noopener">Orçar vinhetas →</a>
+        </article>
+        <article class="card reveal">
+          <div class="ico">🎼</div>
+          <h3>Trilhas sonoras originais</h3>
+          <p>Produções instrumentais para vídeos institucionais, apresentações, conteúdos digitais e projetos especiais.</p>
+          <ul><li>Entrega sugerida: Trilha instrumental personalizada, com duração e formato definidos no projeto.</li></ul>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20de%20trilha%20sonora%20original." target="_blank" rel="noopener">Orçar minha trilha →</a>
+        </article>
+        <article class="card reveal">
+          <div class="ico">🎙️</div>
+          <h3>Identidade sonora</h3>
+          <p>Uma assinatura musical própria para fortalecer o reconhecimento e a personalidade da sua marca.</p>
+          <ul><li>Entrega sugerida: Assinatura sonora e aplicações definidas previamente no orçamento.</li></ul>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20de%20identidade%20sonora." target="_blank" rel="noopener">Orçar identidade sonora →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="alt">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Como funciona</span>
+        <h2 class="section-title">Da ideia à música pronta.</h2>
+      </div>
+      <div class="steps four">
+        <div class="step reveal"><h3>Sua ideia</h3><p>Você informa o segmento, o objetivo e o estilo desejado.</p></div>
+        <div class="step reveal"><h3>Briefing</h3><p>Alinhamos conceito, linguagem, duração e entregas.</p></div>
+        <div class="step reveal"><h3>Produção</h3><p>Criamos e finalizamos o material conforme o projeto aprovado.</p></div>
+        <div class="step reveal"><h3>Entrega</h3><p>Você recebe os arquivos e as versões previstos no orçamento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="investimento">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Produção exclusiva para sua marca</span>
+        <h2 class="section-title">Investimento sob medida.</h2>
+        <p class="section-lead">Cada projeto parte de um briefing específico. Não trabalhamos com paródias: nosso foco são produções originais. O valor varia conforme o tipo de produção, a complexidade, a duração e as entregas necessárias.</p>
+      </div>
+      <div class="trio">
+        <article class="card reveal">
+          <h3>Produção personalizada</h3>
+          <div class="price">Sob orçamento</div>
+          <p>Valor conforme o briefing.</p>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20de%20produ%C3%A7%C3%A3o%20personalizada." target="_blank" rel="noopener">Pedir orçamento →</a>
+        </article>
+        <article class="card reveal">
+          <h3>Pacote de vinhetas</h3>
+          <div class="price">10 vinhetas por R$ 797</div>
+          <p>Oferta sujeita à vigência no momento da contratação.</p>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20pacote%20de%2010%20vinhetas." target="_blank" rel="noopener">Quero o pacote →</a>
+        </article>
+        <article class="card reveal">
+          <h3>Projeto especial</h3>
+          <div class="price">Mediante proposta</div>
+          <p>Identidade sonora, trilhas ou produções com entregas específicas.</p>
+          <a class="more" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20uma%20proposta%20para%20um%20projeto%20especial." target="_blank" rel="noopener">Pedir proposta →</a>
+        </article>
+      </div>
+      <p class="note reveal">Precisa de entregas recorrentes todo mês? Conheça os <a href="urbas-producoes.html" style="color:var(--cyan)">planos mensais</a>.</p>
+    </div>
+  </section>
+
+  <section id="contato" class="alt cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Próxima produção</span>
+        <h2 class="section-title">Vamos dar voz à sua ideia?</h2>
+        <p class="section-lead">Conte-nos o que sua marca precisa. Vamos avaliar sua ideia e apresentar uma proposta de produção sonora personalizada.</p>
+        <div class="hero-cta">
+          <a class="btn btn-wa" href="https://wa.me/5531996675476?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20or%C3%A7amento%20de%20produ%C3%A7%C3%A3o%20avulsa." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.700-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.600-.9-2.200-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500.7.3 1.300.5 1.700.6.7.2 1.400.2 1.900.1.600-.1 1.700-.7 2-1.400.2-.7.2-1.200.2-1.400-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2z"/></svg>
+            Solicitar orçamento pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="index.html" class="brand"><img src="logo-urbas.jpg" alt="Urba's Produções"><span>URBA'S PRODUÇÕES</span></a>
+    <span>Produção sonora personalizada para marcas que querem ser lembradas.</span>
+    <span>© <span id="ano"></span> Urba's Produções</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5531996675476" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.700-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.600-.9-2.200-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500.7.3 1.300.5 1.700.6.7.2 1.400.2 1.900.1.600-.1 1.700-.7 2-1.400.2-.7.2-1.200.2-1.400-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<script>
+  var menu = document.getElementById('menu');
+  document.getElementById('toggle').addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.addEventListener('click', function(){ menu.classList.remove('open'); });
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
